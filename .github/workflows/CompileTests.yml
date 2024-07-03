@@ -82,12 +82,12 @@ jobs:
       # First of all, we clone the repo using the "checkout" action.
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # We use the "arduino/setup-arduino-cli" action to install and
       # configure the Arduino CLI on the system.
       - name: Setup Arduino CLI
-        uses: arduino/setup-arduino-cli@v1.1.1
+        uses: arduino/setup-arduino-cli@v2
 
       # We then install the platform, which one will be determined
       # dynamically by the build matrix.
@@ -103,7 +103,7 @@ jobs:
       
       # Upload binary (.hex) files to artifacts
       - name: Upload compiled binaries files to Artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: "Binaries for ${{ matrix.config.board }}"
           path: ./
